@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     domains: ["as1.ftcdn.net" ],
   },
-
 }
 
 module.exports = nextConfig

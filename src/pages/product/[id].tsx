@@ -6,9 +6,20 @@ import Layout from '../../../components/Layout';
 import { useCartContext } from '../../../ctx/cartContex';
 import { GetServerSidePropsContext } from 'next';
 
+interface Product {
+    _id: string;
+    name: string;
+    desc: string;
+    category: string;
+    section: string;
+    price: number;
+    image: string;
+    featured: boolean;
+}
 
 
-export default function ProductDetail({product}) {
+
+export default function ProductDetail({product}: {product: Product}) {
 const [quantity, setQuantity] = useState(1);
 
 const { addToCart } = useCartContext()
@@ -57,22 +68,13 @@ return (
 }
 
 
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//     const { data } = await axios.get(`http://localhost:3000/api/products/${context.params.id}`)
-//     return {
-//         props: {
-//             product: data
-//         }
-//     }
-// }
-
 export async function getServerSideProps(context: GetServerSidePropsContext<{ id: string }>) {
-    const { id } = context.params || {}; // Provide a default value of an empty object
+    const { id } = context.params || {}; 
   
     if (!id) {
-      // Handle the case when 'id' is not available in params
+    
       return {
-        notFound: true, // Or you can return an appropriate error status
+        notFound: true, 
       };
     }
   
@@ -87,7 +89,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext<{ id
       console.error('Error fetching product:', error);
   
       return {
-        notFound: true, // Or return an appropriate error status
+        notFound: true, 
       };
     }
   }

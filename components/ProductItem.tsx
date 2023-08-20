@@ -7,6 +7,7 @@ interface Product {
   name: string;
   desc: string;
   category: string;
+  section: string;
   price: number;
   image: string;
   featured: boolean;

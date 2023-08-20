@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
-import axios from "axios";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface CartItem {
   _id: string;
@@ -20,7 +19,6 @@ interface CartContextType {
   toggleCart: () => void;
   addToCart: (newItem: CartItem) => void;
   removeCartItem: (cartItem: CartItem) => void;
-  fetchCartItems: () => void;
 }
 
 const cartContext = createContext<CartContextType | undefined>(undefined);
@@ -61,21 +59,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     });
   };
 
-  const fetchCartItems = async () => {
-    try {
-      // Replace with your actual API endpoint for fetching cart items
-      const response = await axios.get<CartItem[]>("http://localhost:3000//api/cart"); // Example endpoint
-
-      setCartItems(response.data);
-    } catch (error) {
-      console.error("Error fetching cart items:", error);
-    }
-  };
-
-  useEffect(() => {
-    // Fetch initial cart items when the component mounts
-    fetchCartItems();
-  }, []);
 
   return (
     <cartContext.Provider
@@ -85,7 +68,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         isCartOpen,
         addToCart,
         removeCartItem,
-        fetchCartItems,
       }}
     >
       {children}
