@@ -42,7 +42,7 @@ const Section = ({ data, section }: Props) => {
     const section = ctx.params!.sec;
   
     const { data } = await axios.get<Product[]>(
-      `https://e-shop-git-main-noordibou.vercel.app/api/products?sec=${section}`
+      `https://e-shop-five-nu.vercel.app/api/products?sec=${section}`
     );
   
     return {
