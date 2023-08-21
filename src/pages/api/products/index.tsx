@@ -16,10 +16,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 const secProducts = await Product.find({ section: req.query.sec });
                 return res.status(200).json(secProducts);
             } else if (req.query.term) {
-                const search = req.query.term as string; // Get the search term
-                // Use a case-insensitive regex to search for products
+                const search = req.query.term as string; 
                 const searchResults = await Product.find({
-                    name: { $regex: new RegExp(search, 'i') }, // Case-insensitive search in product names
+                    name: { $regex: new RegExp(search, 'i') }, 
                 });
                 return res.status(200).json(searchResults);
             } else {
