@@ -47,7 +47,7 @@ export default function Home({ featuredProducts }: HomeProps) {
 };
 
 export async function getServerSideProps(){
-  const { data } = await axios.get(`https://e-shop-five-nu.vercel.app/api/products`)
+  const { data } = await axios.get(`http://e-shop-git-main-noordibou.vercel.app/api/products`)
 
   return {
     props: {

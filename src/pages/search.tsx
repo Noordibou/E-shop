@@ -22,7 +22,7 @@ interface Props {
 
 async function fetchSearchResults(searchTerm: string) {
   const { data } = await axios.get<Product[]>(
-    `https://e-shop-five-nu.vercel.app/api/products?term=${searchTerm}`
+    `http://e-shop-git-main-noordibou.vercel.app/api/products?term=${searchTerm}`
   );
   return data;
 }
