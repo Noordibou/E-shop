@@ -15,6 +15,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             } else if (req.query.sec) {
                 const secProducts = await Product.find({ section: req.query.sec });
                 return res.status(200).json(secProducts);
+            } else if (req.query.term) {
+                const search = req.query.term as string; // Get the search term
+                // Use a case-insensitive regex to search for products
+                const searchResults = await Product.find({
+                    name: { $regex: new RegExp(search, 'i') }, // Case-insensitive search in product names
+                });
+                return res.status(200).json(searchResults);
             } else {
                 const products = await Product.find({});
                 return res.status(200).json(products);
@@ -24,8 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             const product = await Product.create({ ...req.body });
             return res.status(200).json(product);
         }
-
-    };
+    }
 }
 
 export default handler;

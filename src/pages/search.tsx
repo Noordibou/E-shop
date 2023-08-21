@@ -1,51 +1,74 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import Layout from '../../components/Layout';
+import ProductItem from '../../components/ProductItem';
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
 
 interface Product {
-  id: number;
+  _id: string;
   name: string;
+  desc: string;
+  category: string;
+  section: string;
   price: number;
+  image: string;
+  featured: boolean;
 }
 
-export default function SearchResults() {
-  const router = useRouter();
-  const { query } = router.query;
-  const [searchResults, setSearchResults] = useState<Product[]>([]); // Specify the expected shape
-  const [isLoading, setIsLoading] = useState(true);
+interface Props {
+  initialData: Product[]; 
+  searchParams?: { term: string };
+}
+
+async function fetchSearchResults(searchTerm: string) {
+  const { data } = await axios.get<Product[]>(
+    `http://localhost:3000/api/products?term=${searchTerm}`
+  );
+  return data;
+}
+
+function SearchPage({ searchParams, initialData }: Props) {
+  const [data, setData] = useState<Product[]>(initialData);
 
   useEffect(() => {
-    if (query) {
-      // Fetch search results based on the 'query' parameter
-      // You can use axios or any other HTTP library for this purpose
-      // Replace the following code with your actual API call
-      fetch(`/api/search?query=${query}`)
-        .then((response) => response.json())
-        .then((data: Product[]) => {
-          setSearchResults(data); // Assuming data is an array of search results
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error('Error fetching search results:', error);
-          setIsLoading(false);
-        });
+    if (searchParams?.term) {
+      fetchSearchResults(searchParams.term).then((result) => {
+        setData(result);
+      });
     }
-  }, [query]);
+  }, [searchParams]);
 
   return (
-    <div>
-      <h1>Search Results for: {query}</h1>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {searchResults.map((result) => (
-            <li key={result.id}>
-              {result.name} - ${result.price}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <Layout>
+      <div>Search Results for: {searchParams?.term || ''}</div>
+      <div className="grid grid-cols-3 gap-16">
+        {data?.map((product) => (
+          <ProductItem key={product._id} product={product} />
+        ))}
+      </div>
+    </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const search = ctx.query.term as string | undefined;
+
+  if (!search) {
+    return {
+      props: {
+        initialData: [], 
+      },
+    };
+  }
+
+  const data = await fetchSearchResults(search);
+
+  return {
+    props: {
+      initialData: data,
+      searchParams: { term: search },
+    },
+  };
+};
+
+export default SearchPage;
