@@ -26,7 +26,7 @@ export default function Categories() {
             <span className="absolute bottom-0 left-0 bg-mainColor px-6 py-2 text-lightColor">Watches</span>
           </Link>
           {/* category */}
-          <Link href='/ category/bags' className="h-[325px] w-[325px] relative">
+          <Link href='/category/bags' className="h-[325px] w-[325px] relative">
             <Image src={img3} alt=" " width={325} height={325} className="h-full w-full object-cover" />
             <span className="absolute bottom-0 left-0 bg-mainColor px-6 py-2 text-lightColor" >Bags </span>
           </Link>

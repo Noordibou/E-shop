@@ -1,33 +1,55 @@
-import React from 'react';
+import React, { useState} from 'react';
 import Link from 'next/link';
-import { AiOutlineSearch, AiOutlineShoppingCart  } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { useCartContext } from '../ctx/cartContex';
 import Cart from './Cart';
+import axios from 'axios';
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+}
 
 export default function Navbar() {
-  const {isCartOpen, toggleCart, cartItems} = useCartContext()
+  const { isCartOpen, toggleCart, cartItems } = useCartContext()
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    // Redirect to the SearchResults page with the search query as a query parameter
+    window.location.href = `/search?query=${searchQuery}`;
+  };
   return (
     <div className='bg-darkColor text-mainColor h-[60px] w-full py-2 px-6 flex justify-center'>
       <div className='h-full w-10/12 my-auto flex justify-between items-center'>
 
         <h2 className='text-3xl text-mainColor'>
-          <Link href='/' >WebDevMania</Link>
+          <Link href='/' >Eshop</Link>
         </h2>
+        <div className="search">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
         {/* center */}
         <ul className='flex justify-center items-center gap-6 text-[18px]'>
-          <li className='cursor-pointer transition-all hover:text-lightColor'>Home</li>
-          <li className='cursor-pointer transition-all hover:text-lightColor'>Hero</li>
-          <li className='cursor-pointer transition-all hover:text-lightColor'>Categories</li>
-          <li className='cursor-pointer transition-all hover:text-lightColor'>Featured</li>
-          <li className='cursor-pointer transition-all hover:text-lightColor'>Contacts</li>
+          <Link href='/section/women' className='cursor-pointer transition-all hover:text-lightColor'>Women</Link >
+          <Link href='/section/men' className='cursor-pointer transition-all hover:text-lightColor'>Men</Link >
+          <Link href='/category/watches' className='cursor-pointer transition-all hover:text-lightColor'>Watches</Link>
+          <Link href='/category/bags' className='cursor-pointer transition-all hover:text-lightColor'>Bags</Link>
+          <Link href='/category/sunglasses' className='cursor-pointer transition-all hover:text-lightColor'>Sunglasses</Link>
         </ul>
-       {/*right */}
+        {/*right */}
+     {/* </div> 
         <div className='flex items-center gap-6 '>
-          <div className='flex items-center gap-4 bg-white px-2 py-1 rounded-lg'>
-            <input type="text" placeholder='Search...' />
-            <AiOutlineSearch color='darkColor' />
-          </div>
+        <div className='flex items-center gap-4 bg-white px-2 py-1 rounded-lg'>
+        <input type="text" placeholder='Search...' />
+        <AiOutlineSearch color='darkColor' />
+      </div>  */}
+    
           <div className='relative'>
             <AiOutlineShoppingCart size={25} onClick={toggleCart} />
             <span className='absolute-top-3 -right-4 px-2 rounded-full bg-white text-darkColor'>{cartItems?.length}</span>
@@ -38,6 +60,6 @@ export default function Navbar() {
           <span>Guest</span>
         </div>
       </div>
-    </div>
-    )
+
+  )
 }

@@ -11,8 +11,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 line_items: req.body.lineItems,
                 mode: 'payment',
                 payment_method_types: ['card'],
-                success_url: 'https://localhost:3000/success',
-                cancel_url: 'https://localhost:3000/'
+                success_url: `${req.headers.origin}/success`,
+                cancel_url: `${req.headers.origin}/?canceled=true`,
             })
 
             return res.status(201).json(session)
