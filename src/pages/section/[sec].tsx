@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import Layout from '../../../components/Layout';
 import ProductItem from '../../../components/ProductItem';
+import { NextPageContext } from 'next';
 import { GetServerSideProps } from 'next';
 
 interface Product {
@@ -42,7 +43,7 @@ const Section = ({ data, section }: Props) => {
     const section = ctx.params!.sec;
   
     const { data } = await axios.get<Product[]>(
-      `http://e-shop-git-main-noordibou.vercel.app/api/products?sec=${section}`
+      `http://localhost:3000/api/products?sec=${section}`
     );
   
     return {
