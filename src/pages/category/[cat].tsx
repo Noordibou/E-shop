@@ -25,7 +25,7 @@ const Category = ({ data, category }: Props) => {
       <Layout>
         <div className="w-10/12 h-full mx-auto">
           <h2 className="text-center pt-16 text-2xl">
-             <span className="text-orange-500">{category}</span>
+             <span className="text-mainColor text-2xl font-titleFont uppercase font-semibold">{category}</span>
           </h2>
   
           <div className="grid grid-cols-3 gap-16">

@@ -9,9 +9,13 @@ interface LayoutProps {
   export default function Layout({ children }: LayoutProps) {
     return (
         <>
+        <div className=" bg-bgColor mx-auto">
             <Navbar />
+            <div className='pb-[320px]'>
             {children}
+            </div>
             <Footer />
+        </div>
         </>
     )
 }

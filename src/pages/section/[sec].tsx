@@ -26,7 +26,7 @@ const Section = ({ data, section }: Props) => {
       <Layout>
         <div className="w-10/12 h-full mx-auto">
           <h2 className="text-center pt-16 text-2xl">
-            Section: <span className="text-orange-500">{section}</span>
+             <span className="text-mainColor text-2xl font-titleFont uppercase font-semibold">{section}</span>
           </h2>
   
           <div className="grid grid-cols-3 gap-16">

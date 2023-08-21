@@ -43,7 +43,7 @@ const Cart = () => {
 
   return (
     <form action="/api/checkout" method='POST'>
-    <div className="min-w-[275px] h-full px-3 py-6 bg-white text-[#333] rounded-lg shadow-lg cursor-pointer">
+    <div className="min-w-[275px] h-full px-3 py-6 bg-white text-[#333] rounded-lg  cursor-pointer">
       <div>
         <h2 className="text-center text-2xl">Cart Items</h2>
         <div className="max-h-[225px] overflow-auto flex flex-col gap-8 my-8">

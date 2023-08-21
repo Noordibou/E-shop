@@ -12,10 +12,11 @@ module.exports = {
     extend: {
       colors: {
         bodyColor: '#120F0D',
-        mainColor: '#D63D21',
+        mainColor: '#9E0902',
         lightColor: '#EE8B7A',
-        darkColor: '#D9C7BD',
+        darkColor: '#573B2E',
         hoverColor: 'rgba(100, 255, 218, 0.1)',
+        bgColor: '#FEE8DB',
       },
       fontFamily: {
         titleFont: ['Playfair Display', 'serif'],
