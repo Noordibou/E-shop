@@ -22,7 +22,7 @@ Our Urban Chronicles App for Watches, Bags, and Sunglasses is a cutting-edge onl
 # Technologies Used:
  Next.js, React, TypeScript,MongoDB, Stripe, and Tailwind CSS
 # Access App:
- http://e-shop-git-main-noordibou.vercel.app/
+ https://e-shop-unty.vercel.app/
 
 # Next Steps:
 
