@@ -78,7 +78,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext<{ id
     }
   
     try {
-      const { data:product } = await axios.get(`http://localhost:3000/api/products/${id}`);
+      const { data:product } = await axios.get(`https://e-shop-unty.vercel.app/api/products/${id}`);
       return {
         props: {
           product,
