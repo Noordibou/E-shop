@@ -44,7 +44,7 @@ const Category = ({ data, category }: Props) => {
     const category = ctx.params!.cat;
   
     const { data } = await axios.get<Product[]>(
-      `http://localhost:3000/api/products?cat=${category}`
+      `https://e-shop-unty.vercel.app/api/products?cat=${category}`
     );
   
     return {

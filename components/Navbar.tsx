@@ -81,7 +81,7 @@ export default function Navbar() {
           <Link href='/category/sunglasses' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Sunglasses</Link>
           < SearchBox />
         </ul>
-        <div className='relative'>
+        <div className='relative pr-2'>
           <AiOutlineShoppingCart size={25} style={{ color: 'white' }} onClick={toggleCart} />
           <span className='absolute-top-3 -right-4 px-2 rounded-full bg-white text-darkColor'>{cartItems?.length}</span>
           <div className='absolute top-4 -right-16 z-10'>

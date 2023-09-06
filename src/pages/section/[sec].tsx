@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const section = ctx.params!.sec;
 
   const { data } = await axios.get<Product[]>(
-    `http://localhost:3000/api/products?sec=${section}`
+    `https://e-shop-unty.vercel.app/api/products?sec=${section}`
   );
 
   return {

@@ -12,9 +12,9 @@ export default function Categories() {
       <div className="container mx-auto px-4">
         
         {/* title */}
-        <h2 className="mb-8 text-3xl font-titleFont font-semibold text-darkColor">Categories</h2>
+        <h2 className="mb-8 text-3xl font-titleFont font-semibold text-bodyColor">Categories</h2>
         
-        <div className="flex flex-col md:flex-row gap-4 justify-between">
+        <div className="flex flex-col md:flex-row gap-4 px-4 justify-between">
           
           <Link href='/category/watches' className="mb-4 md:mb-0 md:w-1/3 h-64 relative">
             <Image 
