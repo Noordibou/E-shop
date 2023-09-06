@@ -9,7 +9,7 @@ interface LayoutProps {
   export default function Layout({ children }: LayoutProps) {
     return (
         <>
-        <div className=" bg-darkColor mx-auto">
+        <div className=" bg-bgColor mx-auto">
             <Navbar />
             <div className='pb-[320px]'>
             {children}

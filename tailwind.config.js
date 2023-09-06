@@ -16,7 +16,7 @@ module.exports = {
         lightColor: '#EE8B7A',
         darkColor: '#573B2E',
         hoverColor: 'rgba(100, 255, 218, 0.1)',
-        bgColor: '#FEE8DB',
+        bgColor: '#f5eae4',
       },
       fontFamily: {
         titleFont: ['Playfair Display', 'serif'],
