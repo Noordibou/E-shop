@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <div className='sticky top-0 p-3 flex shadow-navbarShadow bg-bodyColor opacity-3 items-start justify-between lg:h-[12hv] mx-auto z-50 xl:items-center opacity-80'>
       <div className='h-full w-10/12 my-auto flex justify-between items-center'>
-        <h2 className='text-3xl text-mainColor  font-titleFont font-semibold px-4'>
+        <h2 className='text-3xl text-bgColor font-titleFont font-semibold px-4'>
           <Link href='/'>Time Totes</Link>
         </h2>
         <ul className='flex justify-center items-center text-bgColor gap-6  text-[18px]'>
