@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className='bottom-0 flex-shrink-0 px-4 w-full bg-darkColor'>
+    <footer className='bottom-0 flex-shrink-0 px-4 w-full bg-bodyColor'>
       <div className='container mx-auto py-2'>
-        <div className='grid grid-cols-3 gap-8'>
+        <div className='grid grid-cols-3 gap-8 text-xs'>
           {/* column */}
           <div className='flex flex-col gap-4'>
             <h2 className='text-2xl mb-4 text-bgColor'>FAQ</h2>

@@ -43,7 +43,7 @@ const Cart = () => {
 
   return (
     <form action="/api/checkout" method='POST'>
-    <div className="min-w-[275px] h-full px-3 py-6 bg-white text-[#333] rounded-lg  cursor-pointer">
+    <div className="min-w-[275px] h-full px-8 py-6 m-8 bg-bgColor text-[#333]  rounded-lg  cursor-pointer">
       <div>
         <h2 className="text-center text-2xl">Cart Items</h2>
         <div className="max-h-[225px] overflow-auto flex flex-col gap-8 my-8">
@@ -51,9 +51,9 @@ const Cart = () => {
             cartItems?.map((item) => (
               <div key={item._id} className='flex items-center gap-8'>
                 <div>
-                  <Image width='75' height='75' src={item.image} alt="" />
+                  <Image width='300' height='75' src={item.image} alt="" />
                 </div>
-                <div>
+                <div className='text-xs'>
                   <h3>{item.name}</h3>
                   <span>{item.quantity} X ${item.price}</span>
                 </div>
@@ -63,7 +63,7 @@ const Cart = () => {
           ) : <span className="text-red-500 ml-2">Cart is empty!</span>}
         </div>
         <span className="inline-block">Total: <span>${cartItems.reduce((a, b) => a + b.price * b.quantity, 0)}</span></span>
-        <span className="block max-w-max mt-8 px-6 py-1 bg-orange-500 text-[#efefef] rounded-lg" onClick={handleCheckout}>Checkout</span>
+        <span className="block max-w-max mt-8 px-6 py-1 bg-mainColor text-[#efefef] rounded-lg" onClick={handleCheckout}>Checkout</span>
       </div>
     </div>
     </form>
