@@ -12,7 +12,7 @@ export default function Hero() {
         width={900}
         height={500}
       />
-      <div className='absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-bodyColor mobile-text-container shadow-md bg-white bg-opacity-60 rounded'>
+      <div className='absolute top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-bodyColor px-8 text-container shadow-md bg-white bg-opacity-60 rounded'>
         <h1 className='text-4xl font-semibold mb-2 font-titleFont '>
           Discover the Perfect Accessories
         </h1>

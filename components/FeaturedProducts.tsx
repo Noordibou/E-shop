@@ -19,7 +19,7 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ products }) => {
   const featuredProducts = products.filter(product => product.featured);
 
   return (
-    <div className="relative top-24 mt-20 pb-16 ">
+    <div className="relative top-12 mt-20 pb-16 ">
       
       <div className="container mx-auto px-4">
 

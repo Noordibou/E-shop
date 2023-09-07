@@ -20,7 +20,7 @@ export default function SearchBox() {
         value={input}
         onChange={(e)=>setInput(e.target.value)}
         placeholder='Search...'
-         className=' placeholder-gray-500 text-gray-800 px-2 rounded-md outline-none  dark:text-orange-400'/>
+         className=' placeholder-gray-500 text-gray-800 px-2 rounded-md outline-none  dark:text-mainColor'/>
         <button type='submit'
         disabled={!input}
         className='text-mainColor font-titleFont outline-none  px-1 disabled:text-bgColor'>Search</button>

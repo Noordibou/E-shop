@@ -8,7 +8,7 @@ import img3 from '../public/assets/her-him-bags.jpg';
 
 export default function Categories() {
   return (
-    <div className="relative h-full w-full top-24">
+    <div className="relative h-full w-full top-12">
       <div className="container mx-auto px-4">
         
         {/* title */}
