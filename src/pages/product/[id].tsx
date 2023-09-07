@@ -1,7 +1,9 @@
 import axios from 'axios';
 import Image from 'next/image';
+import { useRouter } from 'next/router'; 
 import React, { useState } from 'react';
 import { AiFillShopping } from 'react-icons/ai';
+import { IoArrowBackCircleOutline, IoHeartHalf } from 'react-icons/io5';
 import Layout from '../../../components/Layout';
 import { useCartContext } from '../../../ctx/cartContex';
 import { GetServerSidePropsContext } from 'next';
@@ -21,6 +23,7 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
 
   const { addToCart } = useCartContext();
+  const router = useRouter();
 
   const addQuantity = (command: 'dec' | 'inc') => {
     setQuantity((prev) => {
@@ -39,8 +42,13 @@ export default function ProductDetail({ product }: { product: Product }) {
   return (
     <Layout>
       <div className="py-6 md:py-12 lg:py-24 px-4 sm:px-8 md:px-16 lg:px-24">
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Product Image */}
+          <IoArrowBackCircleOutline
+            size={35}
+            onClick={() => router.back()} 
+            style={{ cursor: 'pointer' }}
+            className='text-bodyColor mb-4'
+          />
+        <div className="flex items-center gap-4">
           <div className="flex-1">
             <div className="max-w-lg mx-auto">
               <Image

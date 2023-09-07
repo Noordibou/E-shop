@@ -3,6 +3,8 @@ import React from 'react';
 import Layout from '../../../components/Layout';
 import ProductItem from '../../../components/ProductItem';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
 interface Product {
   _id: string;
@@ -21,10 +23,18 @@ interface Props {
 }
 
 const Section = ({ data, section }: Props) => {
+  const router = useRouter();
+
   return (
     <Layout>
       <div className="w-full px-4">
-        <h2 className="text-center py-10 text-2xl">
+      <IoArrowBackCircleOutline
+            size={35}
+            onClick={() => router.back()} 
+            style={{ cursor: 'pointer' }}
+            className='text-bodyColor mt-8 '
+          />
+        <h2 className="text-center pb-4 text-2xl">
           <span className="text-mainColor text-2xl font-titleFont uppercase font-semibold">{section}</span>
         </h2>
 
