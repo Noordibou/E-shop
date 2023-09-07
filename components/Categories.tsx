@@ -25,7 +25,7 @@ export default function Categories() {
               className="rounded"
             />
 
-            <span className="absolute bottom-0 left-0 bg-mainColor text-bgColor px-4 py-2 text-sm font-medium">
+            <span className="absolute bottom-0 left-0 bg-bodyColor text-bgColor px-4 py-2 text-sm font-medium">
               Watches
             </span>
           </Link>
@@ -39,7 +39,7 @@ export default function Categories() {
               className="rounded" 
             />
 
-            <span className="absolute bottom-0 left-0 bg-mainColor text-bgColor px-4 py-2 text-sm font-medium">
+            <span className="absolute bottom-0 left-0 bg-bodyColor text-bgColor px-4 py-2 text-sm font-medium">
               Bags
             </span>
           </Link>
@@ -53,7 +53,7 @@ export default function Categories() {
               className="rounded"
             />
 
-            <span className="absolute bottom-0 left-0 bg-mainColor text-bgColor px-4 py-2 text-sm font-medium">
+            <span className="absolute bottom-0 left-0 bg-bodyColor text-bgColor px-4 py-2 text-sm font-medium">
               Sunglasses
             </span>
           </Link>
