@@ -58,13 +58,13 @@ export default function Navbar() {
             />
           </svg>
         </button>
-        <h2 className='text-3xl font-titleFont font-semibold text-bgColor'>
-          <Link href='/'>Time Totes</Link>
+        <h2 className='text-3xl font-semibold text-bgColor px-2'>
+          <Link href='/' className='font-titleFont'>Time Totes</Link>
         </h2>
         <div
           className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden absolute top-16 left-0 w-full bg-bodyColor`}
         >
-          <ul className='flex flex-col items-center gap-4 px-8 py-8 text-bgColor uppercase cursor-pointer font-titleFont'>
+          <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bgColor uppercase cursor-pointer '>
             < SearchBox />
             <Link href='/section/women'>Woman</Link>
             <Link href='/section/men'>Man</Link>
@@ -74,7 +74,7 @@ export default function Navbar() {
           </ul>
         </div>
         <ul className='hidden lg:flex justify-center gap-6 text-bgColor uppercase text-[18px] font-titleFont'>
-          <Link href='/section/women' className='cursor-pointer transition-all hover:text-mainColor'>Woman</Link >
+          <Link href='/section/women' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Woman</Link >
           <Link href='/section/men' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Man</Link >
           <Link href='/category/bags' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Bags</Link>
           <Link href='/category/watches' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Watches</Link>
