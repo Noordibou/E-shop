@@ -62,7 +62,7 @@ export default function Navbar() {
           <Link href='/' className='font-titleFont'>Time Totes</Link>
         </h2>
         <div
-          className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden absolute top-16 left-0 w-full bg-bodyColor`}
+          className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden absolute top-16 left-0 w-full bg-bodyColor`}
         >
           <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bgColor uppercase cursor-pointer '>
             < SearchBox />
@@ -73,7 +73,7 @@ export default function Navbar() {
             <Link href='/category/sunglasses'>Sunglasses</Link>
           </ul>
         </div>
-        <ul className='hidden lg:flex justify-center gap-6 text-bgColor uppercase text-[18px] font-titleFont'>
+        <ul className='hidden md:flex justify-center gap-6 text-bgColor uppercase text-[18px] font-titleFont'>
           <Link href='/section/women' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Woman</Link >
           <Link href='/section/men' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Man</Link >
           <Link href='/category/bags' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Bags</Link>
