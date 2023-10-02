@@ -73,7 +73,7 @@ export default function Navbar() {
             <Link href='/category/sunglasses'>Sunglasses</Link>
           </ul>
         </div>
-        <ul className='hidden md:flex justify-center gap-6 text-bgColor uppercase text-[18px] font-titleFont'>
+        <ul className='hidden lg:flex justify-center gap-6 text-bgColor uppercase lg:text-[18px] text-[14px] font-titleFont'>
           <Link href='/section/women' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Woman</Link >
           <Link href='/section/men' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Man</Link >
           <Link href='/category/bags' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Bags</Link>
