@@ -66,16 +66,16 @@ export default function Navbar() {
         >
           <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bgColor uppercase cursor-pointer '>
             < SearchBox />
-            <Link href='/section/women'>Woman</Link>
-            <Link href='/section/men'>Man</Link>
+            <Link href='/section/women'>Women</Link>
+            <Link href='/section/men'>Men</Link>
             <Link href='/category/bags'>Bags</Link>
             <Link href='/category/watches'>Watches</Link>
             <Link href='/category/sunglasses'>Sunglasses</Link>
           </ul>
         </div>
         <ul className='hidden lg:flex justify-center gap-6 text-bgColor uppercase lg:text-[18px] text-[14px] font-titleFont'>
-          <Link href='/section/women' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Woman</Link >
-          <Link href='/section/men' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Man</Link >
+          <Link href='/section/women' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Women</Link >
+          <Link href='/section/men' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Men</Link >
           <Link href='/category/bags' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Bags</Link>
           <Link href='/category/watches' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Watches</Link>
           <Link href='/category/sunglasses' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Sunglasses</Link>
