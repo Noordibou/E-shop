@@ -40,8 +40,8 @@ function SearchPage({ searchParams, initialData }: Props) {
 
   return (
     <Layout>
-      <div>Search Results for: {searchParams?.term || ''}</div>
-      <div className="grid grid-cols-3 gap-16">
+      <div >Search Results for: {searchParams?.term || ''}</div>
+      <div className="grid grid-cols-3 gap-16  ">
         {data?.map((product) => (
           <ProductItem key={product._id} product={product} />
         ))}

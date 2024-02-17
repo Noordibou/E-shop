@@ -58,14 +58,14 @@ export default function Navbar() {
             />
           </svg>
         </button>
-        <h2 className='text-3xl font-semibold text-bgColor px-2'>
-          <Link href='/' className='font-titleFont'>Time Totes</Link>
+        <h2 className='md:text-3xl text-2xl font-semibold text-bgColor px-2'>
+          <Link href='/' className='font-titleFont '>Time Totes</Link>
         </h2>
         <div
-          className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden absolute top-16 left-0 w-full bg-bodyColor`}
+          className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden absolute top-16 left-0 w-full h-screen bg-bodyColor z-30 `}
         >
-          <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-8 text-bgColor uppercase cursor-pointer '>
-            < SearchBox />
+          <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-24 text-bgColor uppercase cursor-pointer  '>
+           
             <Link href='/section/women'>Women</Link>
             <Link href='/section/men'>Men</Link>
             <Link href='/category/bags'>Bags</Link>
@@ -79,13 +79,16 @@ export default function Navbar() {
           <Link href='/category/bags' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Bags</Link>
           <Link href='/category/watches' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Watches</Link>
           <Link href='/category/sunglasses' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Sunglasses</Link>
-          < SearchBox />
+          {/* < SearchBox /> */}
         </ul>
-        <div className='relative pr-2'>
+        <div className='relative pr-2 flex flex-row  '>
+        < SearchBox />
+        <div className=''>
           <AiOutlineShoppingCart size={25} style={{ color: 'white' }} onClick={toggleCart} />
-          <span className='absolute-top-3 -right-4 px-2 rounded-full bg-white text-darkColor'>{cartItems?.length}</span>
+          <span className='absolute-top-3 -right-4 px-2 rounded-full bg-white text-darkColor w-[10%]'>{cartItems?.length}</span>
           <div className='absolute top-4 -right-16 z-10'>
             {isCartOpen && <Cart />}
+          </div>
           </div>
         </div>
       </div>
