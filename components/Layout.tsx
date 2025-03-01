@@ -11,7 +11,7 @@ interface LayoutProps {
         <>
         <div className=" bg-bgColor mx-auto">
             <Navbar />
-            <div className='pb-[320px]'>
+            <div className='pb-12'>
             {children}
             </div>
             <Footer />

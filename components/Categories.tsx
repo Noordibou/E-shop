@@ -20,8 +20,8 @@ export default function Categories() {
             <Image 
               src={img2}
               alt=""
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
               className="rounded"
             />
 
@@ -34,8 +34,8 @@ export default function Categories() {
             <Image 
               src={img3}
               alt=""
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
               className="rounded" 
             />
 
@@ -48,8 +48,8 @@ export default function Categories() {
             <Image 
               src={img1}
               alt=""
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
               className="rounded"
             />
 

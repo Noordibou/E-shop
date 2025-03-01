@@ -59,12 +59,12 @@ export default function Navbar() {
           </svg>
         </button>
         <h2 className='md:text-3xl text-2xl font-semibold text-bgColor px-2'>
-          <Link href='/' className='font-titleFont '>Time Totes</Link>
+          <Link href='/' className='font-titleFont'>Time Totes</Link>
         </h2>
         <div
           className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden absolute top-16 left-0 w-full h-screen bg-bodyColor z-30 `}
         >
-          <ul className='flex flex-col items-center font-titleFont gap-4 px-8 py-24 text-bgColor uppercase cursor-pointer  '>
+          <ul className='flex flex-col items-center  gap-4 px-8 py-24 text-bgColor uppercase cursor-pointer  '>
            
             <Link href='/section/women'>Women</Link>
             <Link href='/section/men'>Men</Link>
@@ -73,12 +73,12 @@ export default function Navbar() {
             <Link href='/category/sunglasses'>Sunglasses</Link>
           </ul>
         </div>
-        <ul className='hidden lg:flex justify-center gap-6 text-bgColor uppercase lg:text-[18px] text-[14px] font-titleFont'>
-          <Link href='/section/women' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Women</Link >
-          <Link href='/section/men' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Men</Link >
-          <Link href='/category/bags' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Bags</Link>
-          <Link href='/category/watches' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Watches</Link>
-          <Link href='/category/sunglasses' className='cursor-pointer font-titleFont uppercase transition-all hover:text-mainColor'>Sunglasses</Link>
+        <ul className='hidden lg:flex justify-center gap-6 text-bgColor uppercase lg:text-[18px] text-[14px] '>
+          <Link href='/section/women' className='cursor-pointer  uppercase transition-all hover:underline'>Women</Link >
+          <Link href='/section/men' className='cursor-pointer  uppercase transition-all hover:underline'>Men</Link >
+          <Link href='/category/bags' className='cursor-pointer  uppercase transition-all hover:underline'>Bags</Link>
+          <Link href='/category/watches' className='cursor-pointer  uppercase transition-all hover:underline'>Watches</Link>
+          <Link href='/category/sunglasses' className='cursor-pointer  uppercase transition-all hover:underline'>Sunglasses</Link>
           {/* < SearchBox /> */}
         </ul>
         <div className='relative pr-2 flex flex-row  '>

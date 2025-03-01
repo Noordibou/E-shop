@@ -2,8 +2,8 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/router'; 
 import React, { useState } from 'react';
-import { AiFillShopping } from 'react-icons/ai';
-import { IoArrowBackCircleOutline, IoHeartHalf } from 'react-icons/io5';
+import { AiFillShopping, AiFillHeart } from 'react-icons/ai';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import Layout from '../../../components/Layout';
 import { useCartContext } from '../../../ctx/cartContex';
 import { GetServerSidePropsContext } from 'next';
@@ -21,7 +21,7 @@ interface Product {
 
 export default function ProductDetail({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
-
+  const [isFavorite, setIsFavorite] = useState(false);
   const { addToCart } = useCartContext();
   const router = useRouter();
 
@@ -39,64 +39,93 @@ export default function ProductDetail({ product }: { product: Product }) {
     });
   };
 
+
   return (
     <Layout>
-      <div className="py-6 md:py-12 lg:py-24 px-4 sm:px-8 md:px-16 lg:px-24">
-          <IoArrowBackCircleOutline
-            size={35}
-            onClick={() => router.back()} 
-            style={{ cursor: 'pointer' }}
-            className='text-bodyColor mb-4'
-          />
-        <div className="flex items-center gap-4">
-          <div className="flex-1">
-            <div className="max-w-lg mx-auto">
+      <div className="container mx-auto py-6 md:py-8 lg:py-12 px-4 sm:px-6 md:px-8 lg:px-12">
+        {/* Back button */}
+        <button 
+          onClick={() => router.back()}
+          className="flex items-center text-bodyColor hover:text-mainColor transition-colors mb-4 md:mb-6"
+        >
+          <IoArrowBackCircleOutline size={28} className="mr-2" />
+          <span className="text-sm md:text-base">Back to products</span>
+        </button>
+
+        {/* Product Container */}
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 mt-16">
+          {/* Product Image */}
+          <div className="w-full md:w-1/2">
+            <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gray-100 shadow-md">
               <Image
                 src={product?.image}
-                width="500"
-                height="1250"
-                alt="product image"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{ objectFit: 'cover' }}
+                alt={product?.name || "Product image"}
+                className="transition-transform duration-300 hover:scale-105"
+                priority
               />
             </div>
           </div>
 
-          <div className="flex-1 flex flex-col gap-4">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl pb-6 text-mainColor font-titleFont">
-              Name of Product:{" "}
-              <span className="text-bodyColor capitalize ml-2">
-                {product?.name}
+          {/* Product Info */}
+          <div className="w-full md:w-1/2 flex flex-col">
+            {/* Category & Favorite */}
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm text-gray-500 uppercase tracking-wider">
+                {product?.category}
               </span>
-            </h2>
-            <p className="text-lg md:text-xl lg:text-2xl text-mainColor ">
-              Description:{" "}
-              <span className="text-bodyColor ml-2 text-ellipsis">
-                {product?.desc}
-              </span>
-            </p>
-            <div className="flex gap-6 items-center">
-              <span
-                onClick={() => addQuantity("dec")}
-                className="bg-slate-300 px-4 py-2 text-lg"
-              >
-                -
-              </span>
-              <span className="text-xl">{quantity}</span>
-              <span
-                onClick={() => addQuantity("inc")}
-                className="bg-slate-300 px-4 py-2 text-lg"
-              >
-                +
-              </span>
+             
             </div>
-            <span className="text-lg md:text-xl lg:text-2xl text-mainColor">
-              Price:{" "}
-              <span className="text-bodyColor ml-2">${product?.price}</span>
-            </span>
+            
+            {/* Product Name */}
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-bodyColor mb-4">
+              {product?.name}
+            </h1>
+            
+            {/* Price */}
+            <div className="text-xl md:text-2xl font-semibold text-mainColor mb-4">
+              ${product?.price.toFixed(2)}
+            </div>
+            
+            {/* Description */}
+            <div className="mb-6">
+              <h3 className="text-lg font-medium mb-2">Description</h3>
+              <p className="text-gray-600">{product?.desc}</p>
+            </div>
+            
+            {/* Quantity Selector */}
+            <div className="mb-6">
+              <h3 className="text-lg font-medium mb-2">Quantity</h3>
+              <div className="flex items-center">
+                <button
+                  onClick={() => addQuantity("dec")}
+                  className="w-10 h-10 flex items-center justify-center rounded-l-lg bg-gray-200 hover:bg-gray-300 transition-colors"
+                  aria-label="Decrease quantity"
+                >
+                  <span className="text-lg font-medium">−</span>
+                </button>
+                <div className="w-14 h-10 flex items-center justify-center bg-gray-100 border-t border-b border-gray-200">
+                  <span className="text-lg">{quantity}</span>
+                </div>
+                <button
+                  onClick={() => addQuantity("inc")}
+                  className="w-10 h-10 flex items-center justify-center rounded-r-lg bg-gray-200 hover:bg-gray-300 transition-colors"
+                  aria-label="Increase quantity"
+                >
+                  <span className="text-lg font-medium">+</span>
+                </button>
+              </div>
+            </div>
+            
+            {/* Add to Cart Button */}
             <button
               onClick={() => addToCart({ ...product, quantity })}
-              className="mt-auto py-2 px-5 rounded-lg flex items-center gap-4 bg-mainColor text-[#efefef] max-w-max hover:bg-mainColor transition-all"
+              className="mt-auto py-3 px-6 rounded-lg flex items-center justify-center gap-3 bg-mainColor text-white hover:bg-opacity-90 transition-all text-lg font-medium w-full md:w-auto"
             >
-              Add to Cart <AiFillShopping />
+              <AiFillShopping size={22} />
+              Add to Cart
             </button>
           </div>
         </div>

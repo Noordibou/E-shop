@@ -17,28 +17,33 @@ const Cart = () => {
   const { cartItems, removeCartItem } = useCartContext();
 
   const handleCheckout = async () => {
-    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
-    const stripe = await stripePromise;
-    if (!stripe) {
-      throw new Error("Stripe is not initialized");
-    }
-
-    const lineItems = cartItems.map((item) => {
-      return {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: item.name,
+    try {
+      const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
+      const stripe = await stripePromise;
+      if (!stripe) {
+        throw new Error("Stripe is not initialized");
+      }
+  
+      const lineItems = cartItems.map((item) => {
+        return {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: item.name,
+            },
+            unit_amount: item.price * 100,
           },
-          unit_amount: item.price * 100,
-        },
-        quantity: item.quantity,
-      };
-    });
-
-    const { data }: { data: { id: string } } = await axios.post('/api/checkout', { lineItems });
-
-    await stripe.redirectToCheckout({ sessionId: data.id });
+          quantity: item.quantity,
+        };
+      });
+  
+      const { data }: { data: { id: string } } = await axios.post('/api/checkout', { lineItems });
+  
+      await stripe.redirectToCheckout({ sessionId: data.id });
+    } catch (error) {
+      console.error("Checkout failed:", error);
+      // Handle the error appropriately, e.g., display an error message to the user
+    }
   }
 
 
