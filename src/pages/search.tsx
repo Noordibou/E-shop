@@ -16,41 +16,62 @@ interface Product {
   featured: boolean;
 }
 
-// Common function to fetch search results
-async function fetchSearchResults(searchTerm: string) {
-  const { data } = await axios.get<Product[]>(
-    `https://e-shop-unty.vercel.app/api/products?term=${encodeURIComponent(searchTerm)}`
-  );
-  return data;
-}
-
-export default function SearchPage({ initialData = [] }: { initialData?: Product[] }) {
+function SearchPage() {
   const searchParams = useSearchParams();
   const searchTerm = searchParams.get('term') || '';
   
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<Product[]>(initialData);
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState<Product[]>([]);
+  const [error, setError] = useState('');
+
+  // Updated to use relative URL for API call instead of absolute URL
+  const fetchSearchResults = async (term: string) => {
+    console.log(`Fetching results for term: "${term}"`);
+    try {
+      // Use relative URL to avoid CORS issues
+      const url = `/api/products?term=${encodeURIComponent(term)}`;
+      console.log(`API URL: ${url}`);
+      
+      const response = await axios.get<Product[]>(url);
+      console.log(`API response status: ${response.status}`);
+      console.log(`Results count: ${response.data.length}`);
+      
+      return response.data;
+    } catch (err) {
+      console.error('API request failed:', err);
+      if (axios.isAxiosError(err)) {
+        setError(`Search failed: ${err.message}`);
+      } else {
+        setError('Search failed: Unknown error');
+      }
+      return [];
+    }
+  };
 
   // Effect to update results when search term changes
   useEffect(() => {
     const fetchData = async () => {
-      if (searchTerm) {
-        setIsLoading(true);
-        try {
-          const results = await fetchSearchResults(searchTerm);
-          setData(results);
-        } catch (error) {
-          console.error('Error fetching search results:', error);
-        } finally {
-          setIsLoading(false);
-        }
-      } else {
+      if (!searchTerm) {
         setData([]);
+        setIsLoading(false);
+        return;
+      }
+      
+      setIsLoading(true);
+      setError('');
+      
+      try {
+        const results = await fetchSearchResults(searchTerm);
+        setData(results);
+      } catch (error) {
+        console.error('Error in useEffect:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData();
-  }, [searchTerm]);
+  }, [searchTerm]); // Re-run when searchTerm changes
 
   return (
     <Layout>
@@ -68,6 +89,14 @@ export default function SearchPage({ initialData = [] }: { initialData?: Product
                 `Found ${data?.length || 0} ${data?.length === 1 ? "result" : "results"}`
               )}
             </p>
+            {error && (
+              <div className="mt-2 p-2 bg-red-50 border border-red-200 rounded text-red-600">
+                <p>{error}</p>
+                <p className="text-sm mt-1">
+                  Check that your API route at /api/products is properly set up to handle search requests.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Loading State */}
@@ -81,7 +110,7 @@ export default function SearchPage({ initialData = [] }: { initialData?: Product
           {/* Product Grid or Empty State */}
           {!isLoading && (
             <>
-              {data?.length > 0 ? (
+              {data.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
                   {data.map((product) => (
                     <div
@@ -98,7 +127,7 @@ export default function SearchPage({ initialData = [] }: { initialData?: Product
                   ))}
                 </div>
               ) : (
-                <div className="text-center pt-20 bg-white rounded-xl shadow-sm">
+                <div className="text-center pt-20 bg-white rounded-xl shadow-sm p-10">
                   <h3 className="text-2xl font-medium text-gray-800 font-titleFont mb-2">
                     No Results Found
                   </h3>
@@ -114,3 +143,5 @@ export default function SearchPage({ initialData = [] }: { initialData?: Product
     </Layout>
   );
 }
+
+export default SearchPage;
