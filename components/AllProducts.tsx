@@ -3,6 +3,7 @@ import ProductItem from "./ProductItem";
 import { IoGridOutline, IoListOutline } from "react-icons/io5";
 import { BiSort } from "react-icons/bi";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Product {
   _id: string;
@@ -119,7 +120,7 @@ const AllProducts: React.FC<AllProductsProps> = ({
                   className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row"
                 >
                   <div className="relative sm:w-1/3 h-64 sm:h-auto">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover"

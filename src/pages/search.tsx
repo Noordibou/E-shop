@@ -45,7 +45,7 @@ function SearchPage({ searchParams, initialData }: Props) {
           {/* Search Header */}
           <div className="mb-8 bg-white rounded-xl shadow-sm p-6">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-titleFont">
-              Search Results for: "{searchParams?.term || ""}"
+              Search Results for: &quot;{searchParams?.term || ""}&quot;
             </h1>
             <p className="text-gray-600 mt-2 text-sm">
               Found {data?.length || 0} {data?.length === 1 ? "result" : "results"}
@@ -75,7 +75,7 @@ function SearchPage({ searchParams, initialData }: Props) {
                 No Results Found
               </h3>
               <p className="text-gray-500">
-                No products match your search term "{searchParams?.term || ""}". Try something else!
+                No products match your search term &quot;{searchParams?.term || ""}&quot;. Try something else!
               </p>
             </div>
           )}
@@ -84,6 +84,7 @@ function SearchPage({ searchParams, initialData }: Props) {
     </Layout>
   );
 };
+
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const search = ctx.query.term as string | undefined;
 

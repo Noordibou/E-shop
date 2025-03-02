@@ -6,6 +6,7 @@ import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { IoArrowBackCircleOutline, IoFilterOutline, IoGridOutline, IoListOutline } from 'react-icons/io5';
 import { BiSort } from 'react-icons/bi';
+import Image from 'next/image';
 
 interface Product {
   _id: string;
@@ -143,7 +144,7 @@ const Category = ({ data: initialData, category }: Props) => {
                 style={{ cursor: 'pointer' }}
               >
                 <div className="sm:w-1/3 md:w-1/4 h-48 sm:h-auto relative">
-                  <img 
+                  <Image 
                     src={product.image} 
                     alt={product.name} 
                     className="w-full h-full object-cover"
